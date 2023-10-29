@@ -6,13 +6,13 @@ services:
       dockerfile: Dockerfile
     container_name: my-cron-job-container
     environment:
-      - SOCKET_ON_THRESHOLD=98
+      - SOCKET_ON_THRESHOLD=20
       - SOCKET_OFF_THRESHOLD=100
       - HUE_BRIDGE_IP=${HUE_BRIDGE_IP}
       - HUE_BRIDGE_USERNAME=${HUE_BRIDGE_USERNAME}
       - HUE_BRIDGE_SOCKET_ID=${HUE_BRIDGE_SOCKET_ID}
-      - BATTERY_PERCENTAGE_FILE=/battery_capacity
+      - BATTERY_PERCENTAGE_FILE=/battery/capacity
     volumes:
-      - /sys/class/power_supply/BAT1/capacity:/battery_capacity:ro
+      - /sys/class/power_supply/BAT1:/battery:ro
     network_mode: host
     restart: always
