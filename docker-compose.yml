@@ -11,7 +11,8 @@ services:
       - HUE_BRIDGE_IP=${HUE_BRIDGE_IP}
       - HUE_BRIDGE_USERNAME=${HUE_BRIDGE_USERNAME}
       - HUE_BRIDGE_SOCKET_ID=${HUE_BRIDGE_SOCKET_ID}
-      - BATTERY_PERCENTAGE_FILE=/battery/capacity
+      - BATTERY_INFO_ENV_VAR_FILE=/battery/uevent
+      - BATTERY_DIR=
     volumes:
       - /sys/class/power_supply/BAT1:/battery:ro
     network_mode: host

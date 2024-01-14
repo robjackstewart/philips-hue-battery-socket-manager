@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# get the e environment variables populated by the entrypoint
+# get the environment variables populated by the entrypoint
 source /container.env
+source $BATTERY_INFO_ENV_VAR_FILE
 
 # Function to turn on the Philips Hue socket
 turn_on_hue_socket() {
@@ -13,14 +14,8 @@ turn_off_hue_socket() {
     curl -X PUT -d '{"on":false}' "http://$HUE_BRIDGE_IP/api/$HUE_BRIDGE_USERNAME/lights/$HUE_BRIDGE_SOCKET_ID/state"
 }
 
-# Function to check battery level
-check_battery_level() {
-    battery_percentage=$(cat $BATTERY_PERCENTAGE_FILE)
-    echo "$battery_percentage"
-}
-
 # Main script logic
-battery_level=$(check_battery_level)
+battery_level=$POWER_SUPPLY_CAPACITY
 
 echo "battery percentage is $battery_level"
 
