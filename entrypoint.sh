@@ -14,11 +14,11 @@ check_env_var "SOCKET_OFF_THRESHOLD"
 check_env_var "HUE_BRIDGE_IP"
 check_env_var "HUE_BRIDGE_USERNAME"
 check_env_var "HUE_BRIDGE_SOCKET_ID"
-check_env_var "BATTERY_PERCENTAGE_FILE"
+check_env_var "BATTERY_INFO_ENV_VAR_FILE"
 
 # Check if a required file exists
-if [ ! -f "$BATTERY_PERCENTAGE_FILE" ]; then
-  echo "Error: The required file '$BATTERY_PERCENTAGE_FILE' does not exist."
+if [ ! -f "$BATTERY_INFO_ENV_VAR_FILE" ]; then
+  echo "Error: The required file '$BATTERY_INFO_ENV_VAR_FILE' does not exist."
   exit 1
 fi
 
